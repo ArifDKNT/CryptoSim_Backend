@@ -1,0 +1,39 @@
+{
+  "name": "express-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "NODE_ENV=test jest --testTimeout=10000",
+    "testwarnings": "NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "jwt",
+    "authentication",
+    "mongodb"
+  ],
+  "dependencies": {
+    "axios": "^0.26.0",
+    "babel-jest": "^27.5.1",
+    "bcryptjs": "^2.4.3",
+    "binance-api-node": "^0.12.7",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "^4.3.3",
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongod": "^2.0.0",
+    "mongodb": "^4.4.0",
+    "mongodb-memory-server-core": "^8.3.0",
+    "mongodb-server": "^1.0.0",
+    "mongoose": "^6.2.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2",
+    "socket.io": "^4.7.5"
+  }
+}
