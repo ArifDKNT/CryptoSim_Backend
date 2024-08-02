@@ -15,7 +15,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://crypto-sim-client.vercel.app/", // Allow your frontend URL
+        origin: "https://crypto-sim-client-cjl1tuk13-arifs-projects-f0bf36ea.vercel.app/", // Allow your frontend URL
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
         credentials: true
