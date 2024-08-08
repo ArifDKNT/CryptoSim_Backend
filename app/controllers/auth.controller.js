@@ -119,4 +119,9 @@ exports.login = (req, res) => {
         });
 };
 
+exports.health = (req, res) => {
+    return res.status(200).send({
+        message: "Healthy"
+    });
+};
 
