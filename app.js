@@ -15,18 +15,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+        origin: "*", // Allow your frontend URL
+        methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
         credentials: true
     }
 });
 
 const corsOptions = {
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-    credentials: true
+    origin: "*"
 };
 
 app.use(cors(corsOptions));
