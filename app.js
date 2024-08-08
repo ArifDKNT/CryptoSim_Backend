@@ -113,7 +113,9 @@ app.use(function(req, res, next) {
 
 app.post("/auth/register", [verifyRegister.checkDuplicateUsernameOrEmail], authController.register);
 app.post("/auth/login", authController.login);
-app.get("/health", authController.health);
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
 
 // User endpoints with verifyToken middleware
 app.post("/user/balance", [authJwt.verifyToken], userController.getUserBalance);
