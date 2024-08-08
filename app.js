@@ -12,7 +12,8 @@ const { MongoClient } = require('mongodb');
 const initialize = require('./orderListener'); // Import the order listener
 
 const app = express();
-const server = http.createServer(app);
+const websocketApp = express(); // Separate Express app for WebSocket health check
+const server = http.createServer(websocketApp); // Create server for WebSocket health check
 const io = socketIo(server, {
     cors: {
         origin: "*", // Allow your frontend URL
@@ -93,8 +94,13 @@ io.on('connection', (socket) => {
 // Start the order listener
 initialize().catch(console.error);
 
+// Add the health check endpoint for WebSocket server
+websocketApp.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
 server.listen(4000, () => {
-    console.log('listening on *:4000');
+    console.log('WebSocket server listening on port 4000');
 });
 
 // Auth routes and middlewares
@@ -124,7 +130,7 @@ app.post("/user/sell", [authJwt.verifyToken], userController.sell);
 app.post("/user/buyOrder", [authJwt.verifyToken], userController.buyOrder);
 app.post("/user/sellOrder", [authJwt.verifyToken], userController.sellOrder);
 app.post("/user/value", [authJwt.verifyToken], userController.getUserValue);
-app.get("/user/getAllUsers",userController.getAllUsers);
+app.get("/user/getAllUsers", userController.getAllUsers);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
